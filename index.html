@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Title</title>
+  <meta name="description" content="Project website (unpublished). Intro + video." />
+  <style>
+    :root { --fg:#111; --muted:#555; --bg:#fff; --card:#f6f6f6; --border:#e6e6e6; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+           color:var(--fg); background:var(--bg); line-height:1.55; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 64px; }
+    header { margin: 10px 0 22px; }
+    h1 { font-size: 34px; margin: 0 0 8px; letter-spacing:-0.02em; }
+    .subtitle { color:var(--muted); margin:0; }
+    .pillrow { margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .pill { font-size: 13px; padding: 6px 10px; border:1px solid var(--border); border-radius: 999px; color:var(--muted); background:#fff; }
+    section { margin-top: 26px; padding: 18px; background: var(--card); border:1px solid var(--border); border-radius: 16px; }
+    section h2 { margin:0 0 10px; font-size: 18px; }
+    .intro { color: var(--fg); margin:0; white-space: pre-line; }
+    .hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .video {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      background: #000; border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+    }
+    iframe, video { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    footer { margin-top: 18px; color: var(--muted); font-size: 13px; }
+    a { color: inherit; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Project Title (Unpublished)</h1>
+      <p class="subtitle">Short tagline / one-line summary goes here.</p>
+      <div class="pillrow">
+        <span class="pill">Intro</span>
+        <span class="pill">Video</span>
+        <span class="pill">Coming soon</span>
+      </div>
+    </header>
+
+    <!-- (1) INTRO -->
+    <section id="intro">
+      <h2>Intro</h2>
+      <p class="intro">
+[PLACEHOLDER INTRO]
+- 1–2 sentences describing the problem.
+- 1–2 sentences describing your approach.
+- 1 sentence about results / takeaway.
+      </p>
+      <div class="hint">Tip: 80–150 words is perfect for an unpublished project.</div>
+    </section>
+
+    <!-- (2) VIDEO -->
+    <section id="video">
+      <h2>Video</h2>
+
+      <!-- Option A: YouTube embed (recommended). Replace VIDEO_ID -->
+      <div class="video" style="margin-top:12px;">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1"
+          title="Project video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Option B: Local mp4 (uncomment and put your file in assets/)
+      <div class="video" style="margin-top:12px;">
+        <video controls playsinline poster="assets/poster.jpg">
+          <source src="assets/demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+      -->
+
+      <div class="hint">
+        If you use YouTube: upload video → copy the ID after "v=" → replace VIDEO_ID above.
+        <br/>If you use local MP4: put <code>demo.mp4</code> under <code>assets/</code> and enable Option B.
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Your Name. This project is under review / unpublished.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
