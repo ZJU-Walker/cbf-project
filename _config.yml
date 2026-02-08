@@ -1,0 +1,22 @@
+title: "Project Title"
+description: "Unpublished project website"
+
+# Use the console theme via GitHub Pages remote_theme
+remote_theme: b2a3e8/jekyll-theme-console
+
+plugins:
+  - jekyll-seo-tag
+
+# Theme style: dark (default), light, hacker, nord
+style: dark
+listen_for_clients_preferred_style: true
+
+# If you embed YouTube/Vimeo/Bilibili iframes, allow frames via CSP:
+csp_extra: "frame-src https:;"
+
+# Optional: simple top menu. Keep it minimal if you only have index.md
+header_pages:
+  - index.md
+
+# Optional footer
+footer: '© 2026 Your Name — Unpublished / Under review.'
