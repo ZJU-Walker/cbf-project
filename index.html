@@ -6,10 +6,10 @@
   <title>Project Title</title>
   <meta name="description" content="Project website (unpublished). Intro + video." />
 
-  <!-- Google Font: Cormorant Garamond -->
+  <!-- Serif font for project name -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
@@ -41,7 +41,18 @@
     }
 
     /* =========================
-       Base Layout (NO bold)
+       Global hard reset (NO bold)
+       ========================= */
+    * {
+      font-weight: 400 !important;
+    }
+
+    strong, b {
+      font-weight: 400 !important;
+    }
+
+    /* =========================
+       Base Layout
        ========================= */
     body {
       margin: 0;
@@ -52,7 +63,6 @@
       color: var(--text-color);
       background: var(--bg-color);
       line-height: 1.65;
-      font-weight: 400;
     }
 
     .wrap {
@@ -66,11 +76,10 @@
     }
 
     /* =========================
-       Project Name (Serif)
+       Project Name (Serif, NOT bold)
        ========================= */
     .home-name {
       font-family: "Cormorant Garamond", serif;
-      font-weight: 400;        /* NOT bold */
       font-size: 2.9rem;
       line-height: 1.05;
       margin: 0 0 1rem 0;
@@ -79,7 +88,6 @@
     .subtitle {
       color: var(--muted-text);
       margin: 0;
-      font-weight: 400;
     }
 
     /* =========================
@@ -95,7 +103,6 @@
     section h2 {
       margin: 0 0 10px;
       font-size: 15px;
-      font-weight: 400;
     }
 
     section h2::before {
@@ -106,14 +113,12 @@
     .intro {
       margin: 0;
       white-space: pre-line;
-      font-weight: 400;
     }
 
     .hint {
       color: var(--muted-text);
       font-size: 12px;
       margin-top: 10px;
-      font-weight: 400;
     }
 
     /* =========================
@@ -143,7 +148,6 @@
       margin-top: 20px;
       color: var(--muted-text);
       font-size: 12px;
-      font-weight: 400;
     }
 
     footer::before {
@@ -156,7 +160,6 @@
     a {
       color: var(--accent-color);
       text-decoration: none;
-      font-weight: 400;
     }
 
     a:hover {
@@ -207,7 +210,7 @@
       </div>
 
       <div class="hint">
-        Replace <code>VIDEO_ID</code> with your YouTube video ID.
+        Replace VIDEO_ID with your YouTube video ID.
       </div>
     </section>
 
