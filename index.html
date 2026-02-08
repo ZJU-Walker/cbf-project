@@ -1,44 +1,245 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Project Title</title>
   <meta name="description" content="Project website (unpublished). Intro + video." />
+
   <style>
-    :root { --fg:#111; --muted:#555; --bg:#fff; --card:#f6f6f6; --border:#e6e6e6; }
-    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-           color:var(--fg); background:var(--bg); line-height:1.55; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 64px; }
-    header { margin: 10px 0 22px; }
-    h1 { font-size: 34px; margin: 0 0 8px; letter-spacing:-0.02em; }
-    .subtitle { color:var(--muted); margin:0; }
-    .pillrow { margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .pill { font-size: 13px; padding: 6px 10px; border:1px solid var(--border); border-radius: 999px; color:var(--muted); background:#fff; }
-    section { margin-top: 26px; padding: 18px; background: var(--card); border:1px solid var(--border); border-radius: 16px; }
-    section h2 { margin:0 0 10px; font-size: 18px; }
-    .intro { color: var(--fg); margin:0; white-space: pre-line; }
-    .hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
-    .video {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      background: #000; border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+    /* =========================
+       Theme (Day / Night)
+       ========================= */
+    :root {
+      --bg-color: #f5f1e8;
+      --text-color: #2b2b2b;
+      --accent-color: #3a6f5c;
+      --border-color: #d6d1c4;
+
+      --card-bg: rgba(255, 255, 255, 0.6);
+      --muted-text: #6b6b6b;
+
+      --base-font-size: 0.95rem;
     }
-    iframe, video { position:absolute; inset:0; width:100%; height:100%; border:0; }
-    footer { margin-top: 18px; color: var(--muted); font-size: 13px; }
-    a { color: inherit; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0f1415;
+        --text-color: #e6edf3;
+        --accent-color: #6fb1ff;
+        --border-color: #1e3a5a;
+
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --muted-text: rgba(230, 237, 243, 0.75);
+      }
+    }
+
+    /* manual override support */
+    html[data-theme="light"] {
+      --bg-color: #f5f1e8;
+      --text-color: #2b2b2b;
+      --accent-color: #3a6f5c;
+      --border-color: #d6d1c4;
+
+      --card-bg: rgba(255, 255, 255, 0.6);
+      --muted-text: #6b6b6b;
+    }
+
+    html[data-theme="dark"] {
+      --bg-color: #0f1415;
+      --text-color: #e6edf3;
+      --accent-color: #6fb1ff;
+      --border-color: #1e3a5a;
+
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --muted-text: rgba(230, 237, 243, 0.75);
+    }
+
+    /* =========================
+       Base Layout
+       ========================= */
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+        "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: var(--base-font-size);
+      color: var(--text-color);
+      background: var(--bg-color);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    header {
+      margin: 10px 0 22px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .header-left {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted-text);
+      margin: 0;
+    }
+
+    /* =========================
+       Theme Toggle Button
+       ========================= */
+    .toggle {
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-color);
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .toggle:hover {
+      border-color: var(--accent-color);
+    }
+
+    .toggle:active {
+      transform: translateY(1px);
+    }
+
+    /* =========================
+       Pills / Badges
+       ========================= */
+    .pillrow {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      color: var(--muted-text);
+      background: transparent;
+    }
+
+    /* =========================
+       Section Cards
+       ========================= */
+    section {
+      margin-top: 26px;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+    }
+
+    section h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .intro {
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    .hint {
+      color: var(--muted-text);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    /* =========================
+       Video
+       ========================= */
+    .video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    iframe,
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* =========================
+       Footer
+       ========================= */
+    footer {
+      margin-top: 18px;
+      color: var(--muted-text);
+      font-size: 13px;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       Small responsive tweaks
+       ========================= */
+    @media (max-width: 680px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .toggle {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <h1>Project Title (Unpublished)</h1>
-      <p class="subtitle">Short tagline / one-line summary goes here.</p>
-      <div class="pillrow">
-        <span class="pill">Intro</span>
-        <span class="pill">Video</span>
-        <span class="pill">Coming soon</span>
+      <div class="header-left">
+        <h1>Project Title (Unpublished)</h1>
+        <p class="subtitle">Short tagline / one-line summary goes here.</p>
+        <div class="pillrow">
+          <span class="pill">Intro</span>
+          <span class="pill">Video</span>
+          <span class="pill">Coming soon</span>
+        </div>
       </div>
+
+      <!-- Theme toggle (optional but recommended) -->
+      <button class="toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+        Toggle theme
+      </button>
     </header>
 
     <!-- (1) INTRO -->
@@ -87,7 +288,38 @@
   </div>
 
   <script>
+    // year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // theme toggle + persistence
+    const html = document.documentElement;
+    const btn = document.getElementById("theme-toggle");
+
+    // Load saved theme if any (overrides system)
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") {
+      html.setAttribute("data-theme", saved);
+    } else {
+      html.removeAttribute("data-theme"); // follow system
+    }
+
+    function currentTheme() {
+      const t = html.getAttribute("data-theme");
+      if (t === "light" || t === "dark") return t;
+      // if following system, infer current
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark" : "light";
+    }
+
+    function setTheme(next) {
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    btn?.addEventListener("click", () => {
+      const cur = currentTheme();
+      setTheme(cur === "dark" ? "light" : "dark");
+    });
   </script>
 </body>
 </html>
