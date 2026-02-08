@@ -75,8 +75,8 @@
        Project Name (Serif, NOT bold)
        ========================= */
     .home-name { 
-      font-family: "Cormorant Garamond", 
-      serif; font-size: 2.9rem; 
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.9rem; 
       line-height: 1.05; 
       margin: 0 0 1rem 0; 
     }
@@ -84,6 +84,12 @@
     .subtitle {
       color: var(--muted-text);
       margin: 0;
+    }
+
+    .meta {
+      color: var(--muted-text);
+      font-size: 0.85rem;
+      margin-top: 4px;
     }
 
     /* =========================
@@ -183,6 +189,11 @@
       text-decoration: underline;
     }
 
+    /* underline only for code link */
+    .code-link {
+      text-decoration: underline;
+    }
+
     @media (max-width: 640px) {
       .home-name {
         font-size: 2.2rem;
@@ -195,7 +206,23 @@
   <div class="wrap">
     <header>
       <h1 class="home-name">Safety-Critical Control for Legged Robots (MPC + CBF)</h1>
-      <p class="subtitle">Safety-critical control of legged robots via Control Barrier Functions integrated with model predictive control.</p>
+
+      <p class="meta">
+        Ke Wang, Qiayuan Liao, Zhongyu Li, Koushil Sreenath
+      </p>
+
+      <p class="subtitle">
+        Safety-critical control of legged robots via Control Barrier Functions integrated with model predictive control.
+      </p>
+
+      <p>
+        <a class="code-link"
+           href="https://github.com/ZJU-Walker/cbf_3D_smooth"
+           target="_blank"
+           rel="noopener noreferrer">
+          code
+        </a>
+      </p>
     </header>
 
     <!-- INTRO -->
@@ -206,7 +233,6 @@
 This project focuses on safety-critical control for quadruped robots navigating in constrained environments. We integrate Control Barrier Functions into a model predictive control framework to enforce collision-avoidance constraints in real time. This framework enables safe traversal of narrow openings that would be challenging for standard MPC methods.
       </p>
 
-      <!-- Framework figure (place file at: assets/framework.png) -->
       <div class="figure">
         <img src="assets/framework.png" alt="MPC + CBF framework">
       </div>
