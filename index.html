@@ -9,7 +9,7 @@
   <style>
     /* =========================
        Theme (Day / Night)
-       Auto follow system only
+       Auto follow system
        ========================= */
     :root {
       --bg-color: #f5f1e8;
@@ -68,24 +68,6 @@
     .subtitle {
       color: var(--muted-text);
       margin: 0;
-    }
-
-    /* =========================
-       Pills (retro tags)
-       ========================= */
-    .pillrow {
-      margin-top: 12px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      font-size: 12px;
-      padding: 3px 8px;
-      border: 1px solid var(--border-color);
-      color: var(--muted-text);
-      background: transparent;
     }
 
     /* =========================
@@ -165,9 +147,6 @@
       text-decoration: underline;
     }
 
-    /* =========================
-       Mobile tweaks
-       ========================= */
     @media (max-width: 640px) {
       h1 {
         font-size: 26px;
@@ -181,12 +160,6 @@
     <header>
       <h1>Project Title (Unpublished)</h1>
       <p class="subtitle">Short tagline / one-line summary goes here.</p>
-
-      <div class="pillrow">
-        <span class="pill">intro</span>
-        <span class="pill">video</span>
-        <span class="pill">coming-soon</span>
-      </div>
     </header>
 
     <!-- INTRO -->
