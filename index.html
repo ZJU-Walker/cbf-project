@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,6 +9,7 @@
   <style>
     /* =========================
        Theme (Day / Night)
+       Auto follow system only
        ========================= */
     :root {
       --bg-color: #f5f1e8;
@@ -16,7 +17,7 @@
       --accent-color: #3a6f5c;
       --border-color: #d6d1c4;
 
-      --card-bg: rgba(255, 255, 255, 0.6);
+      --card-bg: #fdfcf9;
       --muted-text: #6b6b6b;
 
       --base-font-size: 0.95rem;
@@ -29,30 +30,9 @@
         --accent-color: #6fb1ff;
         --border-color: #1e3a5a;
 
-        --card-bg: rgba(255, 255, 255, 0.03);
-        --muted-text: rgba(230, 237, 243, 0.75);
+        --card-bg: #0b1014;
+        --muted-text: rgba(230, 237, 243, 0.7);
       }
-    }
-
-    /* manual override support */
-    html[data-theme="light"] {
-      --bg-color: #f5f1e8;
-      --text-color: #2b2b2b;
-      --accent-color: #3a6f5c;
-      --border-color: #d6d1c4;
-
-      --card-bg: rgba(255, 255, 255, 0.6);
-      --muted-text: #6b6b6b;
-    }
-
-    html[data-theme="dark"] {
-      --bg-color: #0f1415;
-      --text-color: #e6edf3;
-      --accent-color: #6fb1ff;
-      --border-color: #1e3a5a;
-
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --muted-text: rgba(230, 237, 243, 0.75);
     }
 
     /* =========================
@@ -60,37 +40,29 @@
        ========================= */
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-        "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Consolas,
+        "Liberation Mono", monospace;
       font-size: var(--base-font-size);
       color: var(--text-color);
       background: var(--bg-color);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .wrap {
-      max-width: 980px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 28px 18px 64px;
     }
 
     header {
-      margin: 10px 0 22px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .header-left {
-      flex: 1;
-      min-width: 240px;
+      margin-bottom: 28px;
     }
 
     h1 {
-      font-size: 34px;
-      margin: 0 0 8px;
-      letter-spacing: -0.02em;
+      font-size: 30px;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
     }
 
     .subtitle {
@@ -99,62 +71,42 @@
     }
 
     /* =========================
-       Theme Toggle Button
-       ========================= */
-    .toggle {
-      border: 1px solid var(--border-color);
-      background: transparent;
-      color: var(--text-color);
-      padding: 8px 12px;
-      border-radius: 12px;
-      cursor: pointer;
-      user-select: none;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .toggle:hover {
-      border-color: var(--accent-color);
-    }
-
-    .toggle:active {
-      transform: translateY(1px);
-    }
-
-    /* =========================
-       Pills / Badges
+       Pills (retro tags)
        ========================= */
     .pillrow {
-      margin-top: 14px;
+      margin-top: 12px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .pill {
-      font-size: 13px;
-      padding: 6px 12px;
+      font-size: 12px;
+      padding: 3px 8px;
       border: 1px solid var(--border-color);
-      border-radius: 999px;
       color: var(--muted-text);
       background: transparent;
     }
 
     /* =========================
-       Section Cards
+       Section Blocks (square)
        ========================= */
     section {
-      margin-top: 26px;
-      padding: 20px;
+      margin-top: 22px;
+      padding: 18px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      backdrop-filter: blur(6px);
     }
 
     section h2 {
       margin: 0 0 10px;
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    section h2::before {
+      content: "> ";
+      color: var(--accent-color);
     }
 
     .intro {
@@ -164,7 +116,7 @@
 
     .hint {
       color: var(--muted-text);
-      font-size: 13px;
+      font-size: 12px;
       margin-top: 10px;
     }
 
@@ -176,8 +128,6 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
-      border-radius: 14px;
-      overflow: hidden;
       border: 1px solid var(--border-color);
     }
 
@@ -194,9 +144,16 @@
        Footer
        ========================= */
     footer {
-      margin-top: 18px;
+      margin-top: 20px;
       color: var(--muted-text);
-      font-size: 13px;
+      font-size: 12px;
+    }
+
+    footer::before {
+      content: "----------------------------------------";
+      display: block;
+      margin-bottom: 10px;
+      color: var(--border-color);
     }
 
     a {
@@ -209,15 +166,11 @@
     }
 
     /* =========================
-       Small responsive tweaks
+       Mobile tweaks
        ========================= */
-    @media (max-width: 680px) {
-      header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .toggle {
-        width: 100%;
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 26px;
       }
     }
   </style>
@@ -226,100 +179,56 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="header-left">
-        <h1>Project Title (Unpublished)</h1>
-        <p class="subtitle">Short tagline / one-line summary goes here.</p>
-        <div class="pillrow">
-          <span class="pill">Intro</span>
-          <span class="pill">Video</span>
-          <span class="pill">Coming soon</span>
-        </div>
-      </div>
+      <h1>Project Title (Unpublished)</h1>
+      <p class="subtitle">Short tagline / one-line summary goes here.</p>
 
-      <!-- Theme toggle (optional but recommended) -->
-      <button class="toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-        Toggle theme
-      </button>
+      <div class="pillrow">
+        <span class="pill">intro</span>
+        <span class="pill">video</span>
+        <span class="pill">coming-soon</span>
+      </div>
     </header>
 
-    <!-- (1) INTRO -->
+    <!-- INTRO -->
     <section id="intro">
       <h2>Intro</h2>
       <p class="intro">
 [PLACEHOLDER INTRO]
-- 1–2 sentences describing the problem.
-- 1–2 sentences describing your approach.
-- 1 sentence about results / takeaway.
+
+1–2 sentences describing the problem.
+1–2 sentences describing your approach.
+1 sentence about results / takeaway.
       </p>
-      <div class="hint">Tip: 80–150 words is perfect for an unpublished project.</div>
+      <div class="hint">
+        Keep it high-level for unpublished work.
+      </div>
     </section>
 
-    <!-- (2) VIDEO -->
+    <!-- VIDEO -->
     <section id="video">
       <h2>Video</h2>
 
-      <!-- Option A: YouTube embed (recommended). Replace VIDEO_ID -->
-      <div class="video" style="margin-top:12px;">
+      <div class="video" style="margin-top:10px;">
         <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1"
+          src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
           title="Project video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>
 
-      <!-- Option B: Local mp4 (uncomment and put your file in assets/)
-      <div class="video" style="margin-top:12px;">
-        <video controls playsinline poster="assets/poster.jpg">
-          <source src="assets/demo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      -->
-
       <div class="hint">
-        If you use YouTube: upload video → copy the ID after "v=" → replace VIDEO_ID above.
-        <br/>If you use local MP4: put <code>demo.mp4</code> under <code>assets/</code> and enable Option B.
+        Replace <code>VIDEO_ID</code> with your YouTube video ID.
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Your Name. This project is under review / unpublished.</div>
+      © <span id="year"></span> Your Name · Unpublished / Under review
     </footer>
   </div>
 
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // theme toggle + persistence
-    const html = document.documentElement;
-    const btn = document.getElementById("theme-toggle");
-
-    // Load saved theme if any (overrides system)
-    const saved = localStorage.getItem("theme");
-    if (saved === "light" || saved === "dark") {
-      html.setAttribute("data-theme", saved);
-    } else {
-      html.removeAttribute("data-theme"); // follow system
-    }
-
-    function currentTheme() {
-      const t = html.getAttribute("data-theme");
-      if (t === "light" || t === "dark") return t;
-      // if following system, infer current
-      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark" : "light";
-    }
-
-    function setTheme(next) {
-      html.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    }
-
-    btn?.addEventListener("click", () => {
-      const cur = currentTheme();
-      setTheme(cur === "dark" ? "light" : "dark");
-    });
   </script>
 </body>
 </html>
