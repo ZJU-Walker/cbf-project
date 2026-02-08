@@ -6,6 +6,11 @@
   <title>Project Title</title>
   <meta name="description" content="Project website (unpublished). Intro + video." />
 
+  <!-- Google Font: Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     /* =========================
        Theme (Day / Night)
@@ -36,7 +41,7 @@
     }
 
     /* =========================
-       Base Layout
+       Base Layout (NO bold)
        ========================= */
     body {
       margin: 0;
@@ -47,6 +52,7 @@
       color: var(--text-color);
       background: var(--bg-color);
       line-height: 1.65;
+      font-weight: 400;
     }
 
     .wrap {
@@ -56,22 +62,28 @@
     }
 
     header {
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
-    h1 {
-      font-size: 30px;
-      margin: 0 0 6px;
-      letter-spacing: -0.01em;
+    /* =========================
+       Project Name (Serif)
+       ========================= */
+    .home-name {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;        /* NOT bold */
+      font-size: 2.9rem;
+      line-height: 1.05;
+      margin: 0 0 1rem 0;
     }
 
     .subtitle {
       color: var(--muted-text);
       margin: 0;
+      font-weight: 400;
     }
 
     /* =========================
-       Section Blocks (square)
+       Sections (square, retro)
        ========================= */
     section {
       margin-top: 22px;
@@ -82,8 +94,8 @@
 
     section h2 {
       margin: 0 0 10px;
-      font-size: 16px;
-      font-weight: normal;
+      font-size: 15px;
+      font-weight: 400;
     }
 
     section h2::before {
@@ -94,12 +106,14 @@
     .intro {
       margin: 0;
       white-space: pre-line;
+      font-weight: 400;
     }
 
     .hint {
       color: var(--muted-text);
       font-size: 12px;
       margin-top: 10px;
+      font-weight: 400;
     }
 
     /* =========================
@@ -129,6 +143,7 @@
       margin-top: 20px;
       color: var(--muted-text);
       font-size: 12px;
+      font-weight: 400;
     }
 
     footer::before {
@@ -141,6 +156,7 @@
     a {
       color: var(--accent-color);
       text-decoration: none;
+      font-weight: 400;
     }
 
     a:hover {
@@ -148,8 +164,8 @@
     }
 
     @media (max-width: 640px) {
-      h1 {
-        font-size: 26px;
+      .home-name {
+        font-size: 2.3rem;
       }
     }
   </style>
@@ -158,7 +174,7 @@
 <body>
   <div class="wrap">
     <header>
-      <h1>Project Title (Unpublished)</h1>
+      <h1 class="home-name">Project Title</h1>
       <p class="subtitle">Short tagline / one-line summary goes here.</p>
     </header>
 
