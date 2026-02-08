@@ -44,13 +44,8 @@
     /* =========================
        Global hard reset (NO bold)
        ========================= */
-    * {
-      font-weight: 400 !important;
-    }
-
-    strong, b {
-      font-weight: 400 !important;
-    }
+    * { font-weight: 400 !important; }
+    strong, b { font-weight: 400 !important; }
 
     /* =========================
        Base Layout
@@ -80,9 +75,12 @@
        Project Name (Serif, NOT bold)
        ========================= */
     .home-name {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.9rem;
-      line-height: 1.05;
+      /* switch between the two if you want:
+         Cormorant Garamond looks more decorative;
+         EB Garamond looks more academic. */
+      font-family: "EB Garamond", serif;
+      font-size: 2.6rem;
+      line-height: 1.15;
       margin: 0 0 1rem 0;
     }
 
@@ -120,6 +118,27 @@
       color: var(--muted-text);
       font-size: 12px;
       margin-top: 10px;
+    }
+
+    /* =========================
+       Framework figure
+       ========================= */
+    .figure {
+      margin: 14px 0;
+      border: 1px solid var(--border-color);
+      background: transparent;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .figure-caption {
+      font-size: 12px;
+      color: var(--muted-text);
+      margin-top: 6px;
     }
 
     /* =========================
@@ -169,7 +188,7 @@
 
     @media (max-width: 640px) {
       .home-name {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -179,14 +198,27 @@
   <div class="wrap">
     <header>
       <h1 class="home-name">Safety-Critical Control for Quadruped Robots (MPC + CBF)</h1>
-      <p class="subtitle">Safety-critical control of legged robots via Control Barrier Functions integrated with model predictive control.</p> 
+      <p class="subtitle">Safety-critical control of legged robots via Control Barrier Functions integrated with model predictive control.</p>
     </header>
 
     <!-- INTRO -->
     <section id="intro">
       <h2>Intro</h2>
+
       <p class="intro">
-This project focuses on safety-critical control for quadruped robots navigating in constrained environments. We integrate Control Barrier Functions into a model predictive control framework to enforce collision-avoidance constraints in real time. This framework enables safe traversal of narrow openings that would be challenging for standard MPC methods.
+This project focuses on safety-critical control for quadruped robots navigating in constrained environments. We integrate Control Barrier Functions into a model predictive control framework to enforce collision-avoidance constraints in real time.
+      </p>
+
+      <!-- Framework figure (place file at: assets/framework.png) -->
+      <div class="figure">
+        <img src="assets/framework.png" alt="MPC + CBF framework">
+      </div>
+      <div class="figure-caption">
+        Figure 1. Overview of the MPC + CBF safety-critical control framework.
+      </div>
+
+      <p class="intro">
+This framework enables safe traversal of narrow openings that would be challenging for standard MPC methods.
       </p>
     </section>
 
